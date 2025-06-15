@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // EmailJS初期化
+    emailjs.init('yHDJY2z82_XmZrn-d');
+    
     const ctaButton = document.querySelector('.cta-button');
     const contactForm = document.querySelector('.contact-form');
     const navLinks = document.querySelectorAll('nav a');
@@ -41,25 +44,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     contactForm.addEventListener('submit', function(e) {
-        const name = this.querySelector('input[name="name"]').value;
-        const email = this.querySelector('input[name="email"]').value;
-        const message = this.querySelector('textarea[name="message"]').value;
+        e.preventDefault();
         
-        if (name && email && message) {
-            // メール本文を構築
-            const subject = 'C3 Works お問い合わせ';
-            const body = `お名前: ${name}\nメールアドレス: ${email}\n\nメッセージ:\n${message}`;
-            
-            // mailtoリンクを構築
-            const mailtoLink = `mailto:c3works.jp@gmail.com?bcc=fukuoka.cons@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            window.location.href = mailtoLink;
-            
-            alert('メールクライアントが開きます。\n送信を完了してください。');
-        } else {
-            e.preventDefault();
-            alert('すべての項目を入力してください。');
-        }
+        // 現在時刻を設定
+        const now = new Date();
+        const timeString = now.toLocaleString('ja-JP', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        document.getElementById('current-time').value = timeString;
+        
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // 送信中表示
+        submitButton.textContent = '送信中...';
+        submitButton.disabled = true;
+        
+        // EmailJSでメール送信
+        emailjs.sendForm('service_gmail', 'template_m2k50ec', this)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('お問い合わせありがとうございます！\n後日担当者よりご連絡いたします。');
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                alert('送信に失敗しました。しばらく時間をおいて再度お試しください。');
+            })
+            .finally(function() {
+                // ボタンを元に戻す
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
     });
 
     const observerOptions = {
