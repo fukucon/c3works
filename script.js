@@ -41,17 +41,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
+        const name = this.querySelector('input[name="name"]').value;
+        const email = this.querySelector('input[name="email"]').value;
+        const message = this.querySelector('textarea[name="message"]').value;
         
         if (name && email && message) {
-            alert('お問い合わせありがとうございます！\n後日担当者よりご連絡いたします。');
-            this.reset();
+            // メール本文を構築
+            const subject = 'C3 Works お問い合わせ';
+            const body = `お名前: ${name}\nメールアドレス: ${email}\n\nメッセージ:\n${message}`;
+            
+            // mailtoリンクを構築
+            const mailtoLink = `mailto:c3works.jp@gmail.com?bcc=fukuoka.cons@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.location.href = mailtoLink;
+            
+            alert('メールクライアントが開きます。\n送信を完了してください。');
         } else {
+            e.preventDefault();
             alert('すべての項目を入力してください。');
         }
     });

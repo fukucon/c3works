@@ -268,10 +268,10 @@
 
         <section id="contact" class="section">
             <h2>お問い合わせ</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="お名前" required>
-                <input type="email" placeholder="メールアドレス" required>
-                <textarea placeholder="メッセージ" rows="5" required></textarea>
+            <form class="contact-form" action="mailto:c3works.jp@gmail.com?bcc=fukuoka.cons@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="お名前" required>
+                <input type="email" name="email" placeholder="メールアドレス" required>
+                <textarea name="message" placeholder="メッセージ" rows="5" required></textarea>
                 <button type="submit">送信</button>
             </form>
         </section>
