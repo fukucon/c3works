@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // EmailJS初期化
     emailjs.init('yHDJY2z82_XmZrn-d');
     
+    // 送信制御用変数
+    let lastSubmitTime = 0;
+    const SUBMIT_COOLDOWN = 30000; // 30秒（ミリ秒）
+    
     const ctaButton = document.querySelector('.cta-button');
     const contactForm = document.querySelector('.contact-form');
     const navLinks = document.querySelectorAll('nav a');
@@ -46,6 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        const currentTime = Date.now();
+        const timeSinceLastSubmit = currentTime - lastSubmitTime;
+        
+        // 30秒以内の連続送信をチェック
+        if (timeSinceLastSubmit < SUBMIT_COOLDOWN) {
+            const remainingTime = Math.ceil((SUBMIT_COOLDOWN - timeSinceLastSubmit) / 1000);
+            alert(`連続送信を防ぐため、${remainingTime}秒後に再度お試しください。`);
+            return;
+        }
+        
         // 現在時刻を設定
         const now = new Date();
         const timeString = now.toLocaleString('ja-JP', {
@@ -71,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('SUCCESS!', response.status, response.text);
                 alert('お問い合わせありがとうございます！\n後日担当者よりご連絡いたします。');
                 contactForm.reset();
+                // 送信成功時に最終送信時刻を更新
+                lastSubmitTime = currentTime;
             })
             .catch(function(error) {
                 console.log('FAILED...', error);
