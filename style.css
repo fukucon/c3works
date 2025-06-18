@@ -83,6 +83,10 @@ main {
     margin-top: 56px;
 }
 
+html {
+    scroll-padding-top: 80px;
+}
+
 .hero {
     background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
     color: white;
@@ -156,9 +160,17 @@ main {
 
 .section h2 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     text-align: center;
     color: #2d3436;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #74b9ff;
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 .section p {
@@ -282,6 +294,52 @@ main {
 
 .skill-tag:hover {
     transform: scale(1.05);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border-top: 4px solid #74b9ff;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.value-card h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #74b9ff;
+    font-weight: bold;
+}
+
+.value-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #2d3436;
+    font-weight: 600;
+}
+
+.value-card p {
+    color: #636e72;
+    line-height: 1.7;
+    margin: 0;
+    text-align: left;
 }
 
 .services-grid {
@@ -462,6 +520,15 @@ footer {
     }
     
     .engineer-info {
+        padding: 1.5rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .value-card {
         padding: 1.5rem;
     }
     
