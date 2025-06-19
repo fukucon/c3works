@@ -83,10 +83,6 @@ main {
     margin-top: 56px;
 }
 
-html {
-    scroll-padding-top: 80px;
-}
-
 .hero {
     background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
     color: white;
@@ -160,17 +156,9 @@ html {
 
 .section h2 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     text-align: center;
     color: #2d3436;
-}
-
-.section-subtitle {
-    font-size: 1.1rem;
-    text-align: center;
-    color: #74b9ff;
-    margin-bottom: 2rem;
-    font-weight: 600;
 }
 
 .section p {
@@ -296,52 +284,6 @@ html {
     transform: scale(1.05);
 }
 
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.value-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    border-top: 4px solid #74b9ff;
-}
-
-.value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.value-card h3 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #74b9ff;
-    font-weight: bold;
-}
-
-.value-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    color: #2d3436;
-    font-weight: 600;
-}
-
-.value-card p {
-    color: #636e72;
-    line-height: 1.7;
-    margin: 0;
-    text-align: left;
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -423,6 +365,28 @@ footer {
     color: white;
     text-align: center;
     padding: 2rem 0;
+    position: relative;
+}
+
+/* Material.htmlへのリンクボタンスタイル */
+.material-link {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    padding: 8px 16px;
+    background-color: #888;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.material-link:hover {
+    background-color: #666;
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 1024px) {
@@ -523,16 +487,14 @@ footer {
         padding: 1.5rem;
     }
     
-    .values-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .value-card {
-        padding: 1.5rem;
-    }
-    
     .services-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .material-link {
+        left: 15px;
+        bottom: 15px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
     }
 }

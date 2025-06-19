@@ -434,30 +434,304 @@
             50% { opacity: 0.3; transform: scale(1.05); }
         }
 
+        .engineers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 98%;
+        }
+
+        .engineer-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .engineer-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .engineer-photo {
+            margin-bottom: 0.5rem;
+        }
+
+        .engineer-photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #74b9ff;
+        }
+
+        .engineer-title h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .engineer-title h4 {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0 0 1rem 0;
+            font-weight: normal;
+        }
+
+        .engineer-right {
+            flex: 1;
+        }
+
+        .engineer-experience {
+            width: 100%;
+        }
+
+        .engineer-skills {
+            width: 100%;
+        }
+
+        .engineer-experience h5,
+        .engineer-skills h5 {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.3rem;
+        }
+
+        .engineer-experience ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .engineer-experience li {
+            margin-bottom: 0.3rem;
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        .engineer-experience a {
+            color: #74b9ff;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .engineer-experience a:hover {
+            text-decoration: underline;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #74b9ff;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .engineer-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .engineer-left {
+                align-items: center;
+            }
+
+            .engineer-photo img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .engineer-photo img[alt="fukucon"] {
+                display: none;
+            }
+
+            .engineer-card:has(img[alt="fukucon"]) .engineer-experience {
+                display: none;
+            }
+
+            .engineer-title h3 {
+                font-size: 1.2rem;
+            }
+
+            .engineer-title h4 {
+                font-size: 1rem;
+            }
+
+            .engineer-experience li {
+                font-size: 0.8rem;
+            }
+
+            .skill-tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+
+        .app-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 98%;
+        }
+
+        .app-example-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .app-example-card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-example-card h4 {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: normal;
+        }
+
+        .app-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 98%;
+        }
+
+        .app-example-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .app-example-card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-example-card h4 {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: normal;
+        }
+
+        .features-list {
+            text-align: left;
+            max-width: 70%;
+            margin: 0 auto;
+        }
+
+        .feature {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 1401pt) {
+            .app-example-card h3 {
+                font-size: 1.56rem;
+            }
+
+            .feature {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 1400pt) {
+            .app-examples {
+                max-width: 99.5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-examples {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .app-example-card {
+                padding: 1rem;
+            }
+
+            .app-example-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .app-example-card h4 {
+                font-size: 1rem;
+            }
+
+            .feature {
+                font-size: 0.9rem;
+            }
+        }
+
         @media print {
             * {
                 -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
 
-            body, .slide-container {
+            body {
                 -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .slide-container {
+                -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
 
             .slide-container:nth-child(odd) {
                 background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%) !important;
                 color: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
             .slide-container:nth-child(even) {
                 background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%) !important;
                 color: #1e3a8a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
-            .down-arrow, .progress-indicator {
+            .down-arrow, .progress-indicator, .progress-dot {
                 display: none !important;
             }
 
@@ -479,6 +753,131 @@
                 animation: none !important;
                 opacity: 0.2 !important;
             }
+
+            /* 印刷時に開発例のテキストが1行に収まるようにフォントサイズを調整 */
+            .feature {
+                font-size: 0.8rem !important;
+                line-height: 1.2 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .app-example-card h3 {
+                font-size: 1rem !important;
+            }
+
+            .app-example-card {
+                padding: 0.8rem !important;
+            }
+
+            /* 印刷時のサポートプラン調整 */
+            .support-plans {
+                max-width: 99% !important;
+            }
+
+            .support-plan-card h3 {
+                font-size: 0.9rem !important;
+            }
+
+            .support-plan-card .price {
+                font-size: 1rem !important;
+            }
+
+            /* 印刷時のみ改行を表示 */
+            .print-break::after {
+                content: "\A";
+                white-space: pre;
+            }
+        }
+
+        /* 通常時は改行しない */
+        .print-break {
+            display: inline;
+        }
+
+        /* サポートプランのスタイル */
+        .support-plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 95%;
+            margin-top: 1rem;
+        }
+
+        .support-plan-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            border: 3px solid #74b9ff;
+        }
+
+        .support-plan-card h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .support-plan-card .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .support-plan-card .description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 1400pt) {
+            .support-plans {
+                max-width: 99.5%;
+            }
+        }
+
+        @media (min-width: 1401pt) {
+            .support-plan-card h3 {
+                font-size: 1.32rem;
+            }
+
+            .support-plan-card .price {
+                font-size: 1.68rem;
+            }
+
+            .support-plan-card .description {
+                font-size: 1.08rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .support-plans {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .support-plan-card {
+                padding: 1rem;
+            }
+
+            .support-plan-card h3 {
+                font-size: 1rem;
+            }
+
+            .support-plan-card .price {
+                font-size: 1.2rem;
+            }
+
+            .support-plan-card .description {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -488,8 +887,7 @@
         <div class="progress-dot" data-slide="1">エンジニア紹介</div>
         <div class="progress-dot" data-slide="2">ウェブアプリ開発</div>
         <div class="progress-dot" data-slide="3">プログラミングコーチ</div>
-        <div class="progress-dot" data-slide="4">IT・AI導入支援</div>
-        <div class="progress-dot" data-slide="5">エクセル・マクロ活用支援</div>
+        <div class="progress-dot" data-slide="4">IT・AI導入支援 他</div>
     </div>
 
     <div class="decorative-shapes">
@@ -552,50 +950,165 @@
 
     <section class="slide-container" id="slide-1">
         <div class="slide-content">
-            <h1 class="slide-title">C3 Worksとは</h1>
-            <p class="slide-text">
-                <span class="text-full">AI支援型開発を活用し、低価格・高品質・短納期を実現するウェブアプリケーション開発チームです。</span>
-                <span class="text-break">AI支援型開発を活用し、低価格・高品質・短納期を実現する<br>ウェブアプリケーション開発チームです。</span>
-            </p>
-            <div class="slide-image">画像エリア 2</div>
+            <h1 class="slide-title">エンジニア紹介</h1>
+            <p class="slide-text">私たちは妥協のないサービスを低価格で提供するためのチームを組んでおります。</p>
+            
+            <div class="engineers-grid">
+                <div class="engineer-card">
+                    <div class="engineer-left">
+                        <div class="engineer-photo">
+                            <img src="images/icon-h3pei.png" alt="h3pei">
+                        </div>
+                        <div class="engineer-title">
+                            <h3>h3pei</h3>
+                            <h4>フルスタックエンジニア</h4>
+                        </div>
+                        <div class="engineer-skills">
+                            <h5>スキル</h5>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Ruby</span>
+                                <span class="skill-tag">Ruby on Rails</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">RSpec</span>
+                                <span class="skill-tag">Vim</span>
+                                <span class="skill-tag">Git/Github</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="engineer-right">
+                        <div class="engineer-experience">
+                            <h5>経歴</h5>
+                            <ul>
+                                <li>Web開発歴13年</li>
+                                <li>ヤフー株式会社
+                                    <br>- ECサービスのバックエンド開発・運用
+                                    <br>- 全サービス共通で使われるプラットフォームシステムの開発/運用
+                                </li>
+                                <li>ラクスル株式会社
+                                    <br>- 決済基盤システムの立ち上げ・開発・運用
+                                    <br>- 印刷ECサービスの開発・運用
+                                    <br>- エンタープライズ向けサービスの立ち上げ・開発・運用
+                                </li>
+                                <li>SaaS開発企業
+                                    <br>- バックエンド&フロントエンドのプロダクト開発・責任者
+                                </li>
+                                <li>現在はフリーランス。Web開発エンジニア&プログラミングコーチとしてマルチに活躍中！
+                                </li>
+                                <li><a href="https://h3pei.tech/" target="_blank">https://h3pei.tech/</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="engineer-card">
+                    <div class="engineer-left">
+                        <div class="engineer-photo">
+                            <img src="images/icon-fukucon.png" alt="fukucon">
+                        </div>
+                        <div class="engineer-title">
+                            <h3>fukucon</h3>
+                            <h4>営業・Webアプリエンジニア</h4>
+                        </div>
+                        <div class="engineer-skills">
+                            <h5>スキル</h5>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Ruby on Rails</span>
+                                <span class="skill-tag">VBA</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Illustrator</span>
+                                <span class="skill-tag">Premerepro</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="engineer-right">
+                        <div class="engineer-experience">
+                            <h5>経歴</h5>
+                            <ul>
+                                <li>Webアプリ開発歴1年</li>
+                                <li>VBA開発歴7年</li>
+                                <li>広告デザイン・営業企画歴5年</li>
+                                <li>IT・AIシステム担当歴4年</li>
+                                <li>SNS動画編集歴4年</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="slide-container" id="slide-2">
         <div class="slide-content">
-            <h1 class="slide-title">Cloud Services</h1>
-            <p class="slide-text">クラウドインフラストラクチャの設計から運用まで、包括的なクラウドサービスを提供します。スケーラブルで安全なソリューションを構築します。</p>
-            <div class="slide-image">画像エリア 3</div>
+            <h1 class="slide-title">ウェブアプリ開発</h1>
+            <p class="slide-text">企業ウェブサイトはもちろん、個人のお客様にオリジナルのウェブアプリケーションを提供いたします。AI支援型開発で低価格・高品質をお約束します。</p>
+            <div class="app-examples">
+                <div class="app-example-card">
+                    <h3>企業向けアプリ開発例(開発5万円～、保守管理10,000円～)</h3>
+                    <div class="features-list">
+                        <div class="feature">社内業務管理アプリ：勤怠管理・スケジュール調整</div>
+                        <div class="feature">プロジェクト管理アプリ：進捗管理・タスク配分</div>
+                        <div class="feature">売上分析アプリ：顧客データ分析・レポート生成</div>
+                        <div class="feature">社内コミュニケーションアプリ：チャット・掲示板機能</div>
+                        <div class="feature">在庫管理アプリ：商品管理・発注システム</div>
+                    </div>
+                </div>
+                
+                <div class="app-example-card">
+                    <h3>個人向けアプリ開発例(開発1万円～、保守管理1,000円～)</h3>
+                    <div class="features-list">
+                        <div class="feature">学習管理アプリ：進捗可視化・目標設定</div>
+                        <div class="feature">習慣トラッキングアプリ：日々の記録・継続支援</div>
+                        <div class="feature">家計簿アプリ：支出管理・予算設定</div>
+                        <div class="feature">健康管理アプリ：体重記録・運動履歴</div>
+                        <div class="feature">レシピ管理アプリ：料理記録・買い物リスト</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="slide-container" id="slide-3">
         <div class="slide-content">
-            <h1 class="slide-title">Data Analytics</h1>
-            <p class="slide-text">ビッグデータの分析と可視化により、ビジネスインサイトを提供します。データドリブンな意思決定をサポートします。</p>
-            <div class="slide-image">画像エリア 4</div>
+            <h1 class="slide-title">プログラミングコーチ・IT研修</h1>
+            <p class="slide-text">企業様、個人様を問わず、Ruby on Railsをはじめ、HTML、CSSなど<span class="print-break"></span>基本的なウェブ知識からスキルアップ、転職に有利な本格的なウェブアプリ構築まで、<span class="print-break"></span>サポートいたします。つまずきがちな環境構築も得意としております。</p>
+            
+            <div class="support-plans">
+                <div class="support-plan-card">
+                    <h3>チャットサポート<br>プラン</h3>
+                    <div class="price">5,000円～</div>
+                    <div class="description">テキストチャットによる質問対応・課題解決サポート</div>
+                </div>
+                
+                <div class="support-plan-card">
+                    <h3>ビデオ通話サポート<br>プラン</h3>
+                    <div class="price">10,000円～</div>
+                    <div class="description">画面共有によるリアルタイム指導・直接的な問題解決</div>
+                </div>
+                
+                <div class="support-plan-card">
+                    <h3>チャット＆ビデオ通話<br>サポートプラン</h3>
+                    <div class="price">15,000円～</div>
+                    <div class="description">両方のサポート方法を組み合わせた包括的な学習支援</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="slide-container" id="slide-4">
         <div class="slide-content">
-            <h1 class="slide-title">AI & Machine Learning</h1>
-            <p class="slide-text">人工知能と機械学習技術を活用して、自動化とインテリジェントなシステムを構築します。未来のビジネスを今すぐ実現しましょう。</p>
-            <div class="slide-image">画像エリア 5</div>
-        </div>
-    </section>
-
-    <section class="slide-container" id="slide-5">
-        <div class="slide-content">
-            <h1 class="slide-title">Support & Maintenance</h1>
-            <p class="slide-text">24/7のサポートと継続的なメンテナンスで、あなたのITシステムを常に最適な状態に保ちます。安心してビジネスに集中できます。</p>
-            <div class="slide-image">画像エリア 6</div>
+            <h1 class="slide-title">IT・AI導入支援</h1>
+            <p class="slide-text">主に中小企業様のIT/DX支援を行い、近年活用が推奨されているAI技術を取り入れる<span class="print-break"></span>ためのお手伝いもしております。開発はもちろん可能ですが、既存のサービスも含め<span class="print-break"></span>お客様にとって最適なIT環境を構築いたします。</p>
+            <h1 class="slide-title">エクセル・マクロ(VBA)活用支援</h1>
+            <p class="slide-text">既存のエクセル・マクロ(VBA)を使った社内システムの改善などを<span class="print-break"></span>サポートいたします。また、中小企業様のエクセル活用の支援もおこないます。<span class="print-break"></span>エクセル・マクロ(VBA)のことならお任せください。</p>
         </div>
     </section>
 
     <script>
         let currentSlide = 0;
-        const totalSlides = 6;
+        const totalSlides = 5;
 
         function scrollToSlide(slideIndex) {
             const slide = document.getElementById(`slide-${slideIndex}`);
