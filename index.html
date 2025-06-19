@@ -4,7 +4,508 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C3 Works.jp</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e6e6e6 0%, #ffffff 100%);
+            color: #1e3a8a;
+            padding: 0.3rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-left: 2rem;
+            display: inline-block;
+        }
+
+        .burger-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            padding: 0;
+            margin-right: 2rem;
+        }
+
+        .burger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #1e3a8a;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        nav {
+            margin-right: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            margin-top: 56px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 3rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 350px;
+        }
+
+        .break-tablet::after {
+            content: ' ';
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 2000px;
+        }
+
+        .hero h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .hero-graphic {
+            flex: 0.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circuit-animation {
+            background: transparent;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            width:auto;
+            margin: 0 ;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2d3436;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #636e72;
+        }
+
+        .engineers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .engineer-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .engineer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .engineer-photo {
+            width: 30%;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            margin: 1rem auto 0;
+            border-radius: 8px;
+        }
+
+        .engineer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .engineer-card:hover .engineer-photo img {
+            transform: scale(1.05);
+        }
+
+        .engineer-info {
+            padding: 2rem;
+        }
+
+        .engineer-info h3 {
+            font-size: 1.5rem;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .engineer-info h4 {
+            font-size: 1.1rem;
+            color: #74b9ff;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .engineer-experience {
+            margin-bottom: 1.5rem;
+        }
+
+        .engineer-experience h5,
+        .engineer-skills h5 {
+            font-size: 1rem;
+            color: #636e72;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.3rem;
+        }
+
+        .engineer-experience ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .engineer-experience li {
+            color: #636e72;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .engineer-experience li::before {
+            content: "▸";
+            color: #74b9ff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .service-card p {
+            color: #636e72;
+            margin: 0;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #74b9ff;
+        }
+
+        .contact-form button {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: 600;
+        }
+
+        .contact-form button:hover {
+            background: #00a085;
+        }
+
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        /* Material.htmlへのリンクボタンスタイル */
+        .material-link {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            padding: 8px 16px;
+            background-color: #888;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .material-link:hover {
+            background-color: #666;
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .break-tablet::after {
+                content: '\A';
+                white-space: pre;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 0;
+                justify-content: space-between;
+                align-items: center;
+                width: 100vw;
+                left: 0;
+                right: 0;
+            }
+            
+            .logo {
+                height: 40px;
+                margin-left: 1rem;
+            }
+            
+            .burger-menu {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #e6e6e6 0%, #ffffff 100%);
+                margin: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+                margin: 0;
+            }
+            
+            nav li {
+                margin: 0;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+            
+            main {
+                margin-top: 56px;
+                width: 100vw;
+                max-width: 100%;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+                width: 100vw;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero h3 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-graphic {
+                margin-top: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .engineers-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .engineer-photo {
+                width: 40%;
+                height: 120px;
+            }
+            
+            .engineer-info {
+                padding: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .material-link {
+                left: 15px;
+                bottom: 15px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
