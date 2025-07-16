@@ -345,6 +345,63 @@
             transform: scale(1.05);
         }
 
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sample-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #00b894;
+        }
+
+        .sample-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .sample-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00b894;
+            font-weight: bold;
+        }
+
+        .sample-card p {
+            color: #636e72;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .sample-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+
+        .sample-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+            background: linear-gradient(135deg, #00a085, #00b894);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -557,6 +614,15 @@
                 padding: 1.5rem;
             }
             
+            .samples-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .sample-card {
+                padding: 1.5rem;
+            }
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
@@ -582,6 +648,7 @@
         <nav id="nav-menu">
             <ul>
                 <li><a href="#home">ホーム</a></li>
+                <li><a href="#samples">サンプルアプリ</a></li>
                 <li><a href="#about">エンジニア</a></li>
                 <li><a href="#services">サービス</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
@@ -751,6 +818,31 @@
                     <h3>Cost-effective</h3>
                     <h4>高い費用対効果</h4>
                     <p>私たちはAI支援型開発を活用し、迅速に多機能なアプリケーションを開発しております。低価格でも妥協のないサービスを提供いたします。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="samples" class="section">
+            <h2>サンプルアプリ</h2>
+            <p>私たちが開発したサンプルアプリケーションをご紹介します。実際にお試しいただけます。</p>
+            
+            <div class="samples-grid">
+                <div class="sample-card">
+                    <h3>シンプルタスク管理アプリ</h3>
+                    <p>自分のやることリストを管理することに特化したタスク管理アプリです。余計な機能一切なし！＋ボタンで予定を追加、☑ボタンで完了！便利な時計付き。アカウント登録などありませんので、ぜひ試用してみてください。登録されたタスクは自動で削除されますので、ご安心を。</p>
+                    <a href="https://mytaskapp-ca73380db3f1.herokuapp.com/" target="_blank" class="sample-button">アプリを試す</a>
+                </div>
+                
+                <div class="sample-card">
+                    <h3>宅配弁当注文＆管理アプリ</h3>
+                    <p>宅配弁当屋さんのためのアプリです！メニュー登録や注文ができちゃいます。一部機能制限されていますが、こちらもお気軽に試用してください！とにかく「注文」できるアプリが欲しい！という方もぜひ、C3Worksにお任せください。</p>
+                    <a href="https://obentoapp-01286989a8eb.herokuapp.com/" target="_blank" class="sample-button">アプリを試す</a>
+                </div>
+                
+                <div class="sample-card">
+                    <h3>シフト希望提出アプリ</h3>
+                    <p>従業員からシフト希望を集めることだけに特化したアプリです。もちろん、シフト管理など機能拡張もお任せください。シフト管理はエクセルでしたい。など、技術者チームC3Worksだからできる提案もお任せください。</p>
+                    <a href="https://shiftapp-29a9e478b412.herokuapp.com/" target="_blank" class="sample-button">アプリを試す</a>
                 </div>
             </div>
         </section>
