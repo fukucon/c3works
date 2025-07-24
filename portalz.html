@@ -198,30 +198,70 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
-        .pricing-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-            border: 3px solid #1e3a8a;
-            position: relative;
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .pricing-card::before {
-            content: '推奨プラン';
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 3px solid #e9ecef;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.standard {
+            border-color: #1e3a8a;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.standard::before {
+            content: '人気プラン';
             position: absolute;
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
             background: #ff6b6b;
             color: white;
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: bold;
+        }
+
+        .pricing-card.premium {
+            border-color: #ffd700;
+        }
+
+        .additional-pricing {
+            margin-top: 3rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .additional-pricing h4 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .pricing-card .price {
@@ -422,18 +462,17 @@
 
     <main>
         <section class="hero">
-            <h1>御社専用ドメインで始める、本格社内ポータル</h1>
+            <h1>専用ドメインで始める、本格社内ポータル</h1>
             <div class="price-highlight">月額15,000円で30名まで利用可能 - 独自ドメイン設定込み</div>
             <p>大手SaaSの1/3の価格で、あなたの会社だけの社内ポータルサイトを構築</p>
             <div class="app-preview">
                 <p>まずは実際のアプリをご覧ください</p>
                 <a href="https://portalz-820e679f52e9.herokuapp.com/" target="_blank" class="app-link">
-                    Portalz デモサイトを見る
+                    Portal-Z デモサイトを見る
                 </a>
             </div>
             <div class="cta-buttons">
                 <a href="#contact" class="cta-button">無料相談を申し込む</a>
-                <a href="#demo" class="cta-button secondary">30日間無料トライアル</a>
             </div>
         </section>
 
@@ -453,9 +492,9 @@
                     <div class="icon">🌐</div>
                     <h3>御社専用ドメインで信頼性アップ</h3>
                     <p>
-                        <strong>company.jp形式の独自ドメイン</strong>設定込み<br>
+                        <strong>company.jpや.comなどの独自ドメイン</strong>設定込み<br>
                         従業員が覚えやすく、安心してアクセス<br>
-                        他社との差別化、ブランディング効果
+                        他社との差別化、ブランディング効果アップ
                     </p>
                 </div>
                 <div class="feature-card">
@@ -466,7 +505,8 @@
                         スケジュール・予定管理<br>
                         ファイル共有（プランに応じて）<br>
                         ユーザー管理・権限設定<br>
-                        勤怠記録・申請ワークフロー
+                        勤怠記録・申請ワークフロー<br>
+                        ※すべてオーダーメイドで構築します
                     </p>
                 </div>
             </div>
@@ -474,21 +514,52 @@
 
         <section id="pricing" class="section pricing-section">
             <h2>料金プラン</h2>
-            <div class="pricing-card">
-                <div class="price">¥15,000<span class="price-unit">/月（税別）</span></div>
-                <h3>ライトプラン</h3>
+            <div class="pricing-plans">
+                <div class="pricing-card">
+                    <div class="price">¥15,000<span class="price-unit">/月（税別）</span></div>
+                    <h3>ライトプラン</h3>
+                    <ul class="features-list">
+                        <li>30ユーザーまで利用可能</li>
+                        <li>独自ドメイン設定込み</li>
+                        <li>基本機能（掲示板・スケジュール）</li>
+                        <li>テキストベースの情報共有</li>
+                        <li>初期費用・設定費用なし</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card standard">
+                    <div class="price">¥25,000<span class="price-unit">/月（税別）</span></div>
+                    <h3>スタンダードプラン</h3>
+                    <ul class="features-list">
+                        <li>30ユーザーまで利用可能</li>
+                        <li>独自ドメイン設定込み</li>
+                        <li>全機能利用可能</li>
+                        <li>ファイル共有機能（10GB）</li>
+                        <li>勤怠管理・申請ワークフロー</li>
+                        <li>カスタマイズ対応</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card premium">
+                    <div class="price">¥40,000<span class="price-unit">/月（税別）</span></div>
+                    <h3>プレミアムプラン</h3>
+                    <ul class="features-list">
+                        <li>30ユーザーまで利用可能</li>
+                        <li>独自ドメイン設定込み</li>
+                        <li>全機能＋高度なカスタマイズ</li>
+                        <li>ファイル共有機能（無制限）</li>
+                        <li>専用サポート・定期ミーティング</li>
+                        <li>独自機能開発対応</li>
+                        <li>データバックアップ・復旧サービス</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="additional-pricing">
+                <h4>追加ユーザー料金（全プラン共通）</h4>
                 <ul class="features-list">
-                    <li>30ユーザーまで利用可能</li>
-                    <li>独自ドメイン設定込み</li>
-                    <li>基本機能すべて利用可能</li>
-                    <li>テキストベースの情報共有</li>
-                    <li>初期費用・設定費用なし</li>
-                </ul>
-                <h4>追加オプション</h4>
-                <ul class="features-list">
-                    <li>31ユーザー目以降: 400円/人・月</li>
-                    <li>ファイル保存機能: +10,000円/月（5GB）</li>
-                    <li>カスタマイズ対応: 50,000円～</li>
+                    <li>31～100ユーザー：400円/人・月</li>
+                    <li>101ユーザー以上：300円/人・月</li>
                 </ul>
             </div>
         </section>
@@ -599,7 +670,7 @@
 
         <section id="contact" class="section contact-section">
             <h2>お問い合わせ・無料相談</h2>
-            <p>まずはお気軽にご相談ください。30日間無料トライアルも実施中です。</p>
+            <p>まずはお気軽にご相談ください。お客様のご要望に応じて最適なプランをご提案いたします。</p>
             <form class="contact-form" id="portalz-contact-form">
                 <input type="text" name="company" placeholder="会社名" required>
                 <input type="text" name="name" placeholder="お名前" required>
