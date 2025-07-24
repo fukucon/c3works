@@ -265,10 +265,11 @@
         }
 
         .plan-specific-pricing {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            justify-content: space-between;
             gap: 1.5rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .plan-pricing {
@@ -276,17 +277,48 @@
             padding: 1.5rem;
             border-radius: 10px;
             border-left: 4px solid #1e3a8a;
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            position: relative;
+        }
+
+        .plan-pricing::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .plan-pricing:nth-child(1)::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="15" fill="%23ff6b6b"/><path d="M35 45c0-8 7-15 15-15s15 7 15 15v20H35V45z" fill="%23ff6b6b"/><text x="50" y="85" text-anchor="middle" font-size="12" fill="%231e3a8a">Light</text></svg>');
+        }
+
+        .plan-pricing:nth-child(2)::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="15" fill="%2374b9ff"/><path d="M35 45c0-8 7-15 15-15s15 7 15 15v20H35V45z" fill="%2374b9ff"/><text x="50" y="85" text-anchor="middle" font-size="10" fill="%231e3a8a">Standard</text></svg>');
+        }
+
+        .plan-pricing:nth-child(3)::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="15" fill="%23ffd700"/><path d="M35 45c0-8 7-15 15-15s15 7 15 15v20H35V45z" fill="%23ffd700"/><text x="50" y="85" text-anchor="middle" font-size="10" fill="%231e3a8a">Premium</text></svg>');
         }
 
         .plan-pricing h5 {
             color: #1e3a8a;
             font-weight: bold;
             margin-bottom: 0.8rem;
-            font-size: 1rem;
+            margin-top: 2rem;
+            font-size: 1.1rem;
         }
 
         .plan-pricing .features-list {
             margin-bottom: 0;
+            text-align: left;
         }
 
         .pricing-card .price {
@@ -476,6 +508,14 @@
             .back-link {
                 margin-right: 1rem;
             }
+
+            .plan-specific-pricing {
+                flex-direction: column;
+            }
+
+            .plan-pricing {
+                min-width: auto;
+            }
         }
     </style>
 </head>
@@ -581,28 +621,41 @@
             </div>
             
             <div class="additional-pricing">
-                <h4>追加ユーザー料金</h4>
+                <h4>📊 追加ユーザー料金</h4>
+                <p style="margin-bottom: 2rem; color: #636e72;">30名を超えるユーザーの月額料金です</p>
                 <div class="plan-specific-pricing">
                     <div class="plan-pricing">
                         <h5>ライトプラン</h5>
-                        <ul class="features-list">
-                            <li>31～100ユーザー：400円/人・月</li>
-                            <li>101ユーザー以上：300円/人・月</li>
-                        </ul>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                            <strong style="color: #ff6b6b;">31～100名</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">400円</span>/人・月
+                        </div>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: #ff6b6b;">101名以上</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">300円</span>/人・月
+                        </div>
                     </div>
                     <div class="plan-pricing">
                         <h5>スタンダードプラン</h5>
-                        <ul class="features-list">
-                            <li>31～100ユーザー：500円/人・月</li>
-                            <li>101ユーザー以上：400円/人・月</li>
-                        </ul>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                            <strong style="color: #74b9ff;">31～100名</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">500円</span>/人・月
+                        </div>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: #74b9ff;">101名以上</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">400円</span>/人・月
+                        </div>
                     </div>
                     <div class="plan-pricing">
                         <h5>プレミアムプラン</h5>
-                        <ul class="features-list">
-                            <li>31～100ユーザー：550円/人・月</li>
-                            <li>101ユーザー以上：450円/人・月</li>
-                        </ul>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                            <strong style="color: #ffd700;">31～100名</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">550円</span>/人・月
+                        </div>
+                        <div style="background: #fff; padding: 1rem; border-radius: 8px;">
+                            <strong style="color: #ffd700;">101名以上</strong><br>
+                            <span style="font-size: 1.2rem; font-weight: bold;">450円</span>/人・月
+                        </div>
                     </div>
                 </div>
             </div>
