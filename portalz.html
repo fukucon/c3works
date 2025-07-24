@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社内ポータルサイト開発 - Portalz | C3 Works.jp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e6e6e6 0%, #ffffff 100%);
+            color: #1e3a8a;
+            padding: 0.3rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-left: 2rem;
+            display: inline-block;
+        }
+
+        .back-link {
+            margin-right: 2rem;
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #ffd700;
+        }
+
+        main {
+            margin-top: 56px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #74b9ff 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero .price-highlight {
+            font-size: 1.8rem;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            width: auto;
+            margin: 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2d3436;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #636e72;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #636e72;
+            line-height: 1.7;
+            margin: 0;
+            text-align: left;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 3px solid #1e3a8a;
+            position: relative;
+        }
+
+        .pricing-card::before {
+            content: '推奨プラン';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            color: #1e3a8a;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price-unit {
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #00b894;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .comparison-table th {
+            background: #1e3a8a;
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table .highlight {
+            background: #e8f4f8;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card .company {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: #2d3436;
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #ee5a52;
+        }
+
+        .app-preview {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .app-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            margin-top: 1rem;
+        }
+
+        .app-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+            background: linear-gradient(135deg, #00a085, #00b894);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .price-highlight {
+                font-size: 1.4rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                height: 40px;
+                margin-left: 1rem;
+            }
+
+            .back-link {
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/C3_logo_blue.png" alt="C3 Works" class="logo">
+        <a href="index.html" class="back-link">← ホームに戻る</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>御社専用ドメインで始める、本格社内ポータル</h1>
+            <div class="price-highlight">月額15,000円で30名まで利用可能 - 独自ドメイン設定込み</div>
+            <p>大手SaaSの1/3の価格で、あなたの会社だけの社内ポータルサイトを構築</p>
+            <div class="app-preview">
+                <p>まずは実際のアプリをご覧ください</p>
+                <a href="https://portalz-820e679f52e9.herokuapp.com/" target="_blank" class="app-link">
+                    Portalz デモサイトを見る
+                </a>
+            </div>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button">無料相談を申し込む</a>
+                <a href="#demo" class="cta-button secondary">30日間無料トライアル</a>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <h2>3つの特徴</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">💰</div>
+                    <h3>圧倒的なコストパフォーマンス</h3>
+                    <p>
+                        <strong>月額15,000円で30ユーザーまで</strong> = 1ユーザーあたり500円<br>
+                        大手S社グループウェア（600円/人）より安価<br>
+                        大手K社システム（1,800円/人）の約1/4の価格
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h3>御社専用ドメインで信頼性アップ</h3>
+                    <p>
+                        <strong>company.jp形式の独自ドメイン</strong>設定込み<br>
+                        従業員が覚えやすく、安心してアクセス<br>
+                        他社との差別化、ブランディング効果
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>必要な機能をオールインワン</h3>
+                    <p>
+                        掲示板・お知らせ機能<br>
+                        スケジュール・予定管理<br>
+                        ファイル共有（プランに応じて）<br>
+                        ユーザー管理・権限設定<br>
+                        勤怠記録・申請ワークフロー
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section pricing-section">
+            <h2>料金プラン</h2>
+            <div class="pricing-card">
+                <div class="price">¥15,000<span class="price-unit">/月（税別）</span></div>
+                <h3>ライトプラン</h3>
+                <ul class="features-list">
+                    <li>30ユーザーまで利用可能</li>
+                    <li>独自ドメイン設定込み</li>
+                    <li>基本機能すべて利用可能</li>
+                    <li>テキストベースの情報共有</li>
+                    <li>初期費用・設定費用なし</li>
+                </ul>
+                <h4>追加オプション</h4>
+                <ul class="features-list">
+                    <li>31ユーザー目以降: 400円/人・月</li>
+                    <li>ファイル保存機能: +10,000円/月（5GB）</li>
+                    <li>カスタマイズ対応: 50,000円～</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="comparison" class="section">
+            <h2>他社サービスとの比較</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th class="highlight">当サービス</th>
+                            <th>大手S社</th>
+                            <th>大手K社</th>
+                            <th>大手M社</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30ユーザー時の月額</td>
+                            <td class="highlight"><strong>15,000円</strong></td>
+                            <td>18,000円</td>
+                            <td>54,000円</td>
+                            <td>25,000円</td>
+                        </tr>
+                        <tr>
+                            <td>独自ドメイン</td>
+                            <td class="highlight">✅ 込み</td>
+                            <td>❌ 別途</td>
+                            <td>❌ 別途</td>
+                            <td>❌ 別途</td>
+                        </tr>
+                        <tr>
+                            <td>初期費用</td>
+                            <td class="highlight">✅ 無料</td>
+                            <td>❌ 有料</td>
+                            <td>❌ 有料</td>
+                            <td>❌ 有料</td>
+                        </tr>
+                        <tr>
+                            <td>日本語サポート</td>
+                            <td class="highlight">✅ 完全対応</td>
+                            <td>✅ 対応</td>
+                            <td>✅ 対応</td>
+                            <td>△ 限定的</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="benefits" class="section">
+            <h2>導入効果・メリット</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>情報の一元化で業務効率アップ</h3>
+                    <p>
+                        社内に散らばった情報を1ヶ所に集約<br>
+                        必要な情報に素早くアクセス<br>
+                        無駄な会議・メールのやり取りを削減
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💬</div>
+                    <h3>コミュニケーション活性化</h3>
+                    <p>
+                        部署を越えた情報共有が円滑に<br>
+                        リモートワークでも情報格差なし<br>
+                        社内の透明性向上
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>セキュリティ・管理面の安心</h3>
+                    <p>
+                        社外からのアクセス制限<br>
+                        ユーザー権限の細かな設定<br>
+                        データのバックアップ・復旧
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section testimonials">
+            <h2>お客様の声</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="company">製造業A社様（従業員65名）</div>
+                    <div class="quote">
+                        「安全管理資料や技術仕様書がすぐに見つかるようになり、現場の作業効率が格段に向上しました。独自ドメインで社員も安心してアクセスしています。」
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="company">サービス業B社様（従業員45名）</div>
+                    <div class="quote">
+                        「シフト管理や顧客情報の共有が楽になり、店舗間の連携がスムーズに。大手サービスの半額以下で同等の機能が使えて大満足です。」
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="company">IT企業C社様（従業員80名）</div>
+                    <div class="quote">
+                        「プロジェクト管理から技術情報の蓄積まで一元化。リモートワークでも情報格差がなくなり、チーム力が向上しました。」
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <h2>お問い合わせ・無料相談</h2>
+            <p>まずはお気軽にご相談ください。30日間無料トライアルも実施中です。</p>
+            <form class="contact-form" id="portalz-contact-form">
+                <input type="text" name="company" placeholder="会社名" required>
+                <input type="text" name="name" placeholder="お名前" required>
+                <input type="email" name="from_email" placeholder="メールアドレス" required>
+                <input type="tel" name="phone" placeholder="電話番号">
+                <input type="number" name="users" placeholder="想定利用者数" min="1">
+                <input type="hidden" name="service" value="Portalz社内ポータルサイト">
+                <input type="hidden" name="time" id="current-time">
+                <textarea name="message" placeholder="ご相談内容・ご質問など" rows="5" required></textarea>
+                <button type="submit">無料相談を申し込む</button>
+            </form>
+        </section>
+    </main>
+
+    <footer style="background: #2d3436; color: white; text-align: center; padding: 2rem 0;">
+        <p>&copy; 2025 C3 Works. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // EmailJS初期化（index.htmlと同じ設定を使用）
+            emailjs.init('yHDJY2z82_XmZrn-d');
+            
+            const contactForm = document.getElementById('portalz-contact-form');
+            let lastSubmitTime = 0;
+            const SUBMIT_COOLDOWN = 30000; // 30秒
+
+            // スムーススクロール
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // お問い合わせフォーム送信
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const currentTime = Date.now();
+                const timeSinceLastSubmit = currentTime - lastSubmitTime;
+                
+                if (timeSinceLastSubmit < SUBMIT_COOLDOWN) {
+                    const remainingTime = Math.ceil((SUBMIT_COOLDOWN - timeSinceLastSubmit) / 1000);
+                    alert(`連続送信を防ぐため、${remainingTime}秒後に再度お試しください。`);
+                    return;
+                }
+                
+                // 現在時刻を設定
+                const now = new Date();
+                const timeString = now.toLocaleString('ja-JP', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('current-time').value = timeString;
+                
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                submitButton.textContent = '送信中...';
+                submitButton.disabled = true;
+                
+                emailjs.sendForm('service_gmail', 'template_m2k50ec', this)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        alert('お問い合わせありがとうございます！\nPortalz社内ポータルサイトについて、後日担当者よりご連絡いたします。');
+                        contactForm.reset();
+                        lastSubmitTime = currentTime;
+                    })
+                    .catch(function(error) {
+                        console.log('FAILED...', error);
+                        alert('送信に失敗しました。しばらく時間をおいて再度お試しください。');
+                    })
+                    .finally(function() {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    });
+            });
+
+            // アニメーション効果
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.feature-card, .pricing-card, .testimonial-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                observer.observe(element);
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</body>
+</html>
