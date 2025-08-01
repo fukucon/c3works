@@ -507,10 +507,339 @@
             transform: translateY(-2px);
         }
 
+        /* Portal-Z Section Styles */
+        .portal-z-section {
+            position: relative;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 25%, #2d1b69 50%, #1e3a8a 75%, #74b9ff 100%);
+            color: white;
+            margin-top: 0;
+            padding: 4rem 2rem;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .portal-z-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(116, 185, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(116, 185, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .float-element {
+            position: absolute;
+            background: linear-gradient(45deg, #74b9ff, #00cec9);
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(1px);
+        }
+
+        .float-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 15%;
+            animation: float1 15s infinite ease-in-out;
+        }
+
+        .float-2 {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 20%;
+            animation: float2 12s infinite ease-in-out reverse;
+        }
+
+        .float-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 10%;
+            animation: float3 18s infinite ease-in-out;
+        }
+
+        .float-4 {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 10%;
+            animation: float1 10s infinite ease-in-out reverse;
+        }
+
+        .float-5 {
+            width: 90px;
+            height: 90px;
+            bottom: 40%;
+            right: 30%;
+            animation: float2 14s infinite ease-in-out;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(15px) rotate(240deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(25px) rotate(180deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            25% { transform: translate(15px, -20px) rotate(90deg); }
+            50% { transform: translate(-10px, -10px) rotate(180deg); }
+            75% { transform: translate(-15px, 10px) rotate(270deg); }
+        }
+
+        .cyber-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cyber-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00cec9, transparent);
+            height: 2px;
+            opacity: 0.8;
+        }
+
+        .line-1 {
+            top: 25%;
+            left: 0;
+            width: 100%;
+            animation: pulseLine 8s infinite ease-in-out;
+        }
+
+        .line-2 {
+            top: 50%;
+            left: 0;
+            width: 80%;
+            animation: pulseLine 6s infinite ease-in-out 2s;
+        }
+
+        .line-3 {
+            top: 75%;
+            right: 0;
+            width: 60%;
+            animation: pulseLine 10s infinite ease-in-out 4s;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.2; transform: scaleX(0.8); }
+            50% { opacity: 0.8; transform: scaleX(1.2); }
+        }
+
+        .data-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            opacity: 0.8;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .particle-1 {
+            top: 20%;
+            left: 20%;
+            animation: particleFloat 12s infinite linear;
+        }
+
+        .particle-2 {
+            top: 40%;
+            left: 70%;
+            animation: particleFloat 15s infinite linear 3s;
+        }
+
+        .particle-3 {
+            top: 70%;
+            left: 30%;
+            animation: particleFloat 10s infinite linear 6s;
+        }
+
+        .particle-4 {
+            top: 30%;
+            left: 80%;
+            animation: particleFloat 18s infinite linear 2s;
+        }
+
+        .particle-5 {
+            top: 80%;
+            left: 60%;
+            animation: particleFloat 14s infinite linear 8s;
+        }
+
+        .particle-6 {
+            top: 60%;
+            left: 15%;
+            animation: particleFloat 16s infinite linear 4s;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translate(50px, -100px) scale(1.5); opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translate(100px, -200px) scale(0.5); opacity: 0; }
+        }
+
+        .portal-z-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .portal-z-title {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(116, 185, 255, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px rgba(116, 185, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(116, 185, 255, 0.8), 0 0 40px rgba(0, 206, 201, 0.3); }
+        }
+
+        .portal-z-name {
+            font-size: 2.5rem;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: nameFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes nameFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .portal-z-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .portal-z-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .portal-z-btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+
+        .portal-z-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .portal-z-btn:hover::before {
+            left: 100%;
+        }
+
+        .portal-z-btn.primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .portal-z-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(135deg, #ee5a52, #d63031);
+        }
+
+        .portal-z-btn.secondary {
+            background: transparent;
+            border: 2px solid #00cec9;
+            color: #00cec9;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+        }
+
+        .portal-z-btn.secondary:hover {
+            background: rgba(0, 206, 201, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 206, 201, 0.5);
+            color: white;
+        }
+
         @media (max-width: 1024px) {
             .break-tablet::after {
                 content: '\A';
                 white-space: pre;
+            }
+            
+            .portal-z-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .portal-z-title {
+                font-size: 1.8rem;
+            }
+
+            .portal-z-name {
+                font-size: 2rem;
+            }
+
+            .float-element {
+                transform: scale(0.8);
             }
         }
 
@@ -823,14 +1152,38 @@
             </div>
         </section>
 
-        <section id="portalz" class="section" style="background: linear-gradient(135deg, #1e3a8a 0%, #74b9ff 100%); color: white; margin-top: 0; padding: 3rem 2rem;">
-            <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
-                <h2 style="color: white; font-size: 2.2rem; margin-bottom: 1rem;">🏢 オリジナル社内向けポータルサイト</h2>
-                <div style="font-size: 1.8rem; color: #ffd700; font-weight: bold; margin-bottom: 1rem;">Portal-Z</div>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">月額15,000円から始める本格的な社内ポータルサイト。独自ドメイン設定込みで、大手SaaSの1/3の価格で実現。</p>
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <a href="portalz.html" style="background: #ff6b6b; color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">詳細を見る</a>
-                    <a href="https://portalz-820e679f52e9.herokuapp.com/" target="_blank" style="background: transparent; border: 2px solid white; color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">デモサイトを見る</a>
+        <section id="portalz" class="section portal-z-section">
+            <div class="portal-z-background">
+                <!-- Animated background elements -->
+                <div class="bg-grid"></div>
+                <div class="floating-elements">
+                    <div class="float-element float-1"></div>
+                    <div class="float-element float-2"></div>
+                    <div class="float-element float-3"></div>
+                    <div class="float-element float-4"></div>
+                    <div class="float-element float-5"></div>
+                </div>
+                <div class="cyber-lines">
+                    <div class="cyber-line line-1"></div>
+                    <div class="cyber-line line-2"></div>
+                    <div class="cyber-line line-3"></div>
+                </div>
+                <div class="data-particles">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                    <div class="particle particle-6"></div>
+                </div>
+            </div>
+            <div class="portal-z-content">
+                <h2 class="portal-z-title">🏢 オリジナル社内向けポータルサイト</h2>
+                <div class="portal-z-name">Portal-Z</div>
+                <p class="portal-z-description">月額15,000円から始める本格的な社内ポータルサイト。独自ドメイン設定込みで、大手SaaSの1/3の価格で実現。</p>
+                <div class="portal-z-buttons">
+                    <a href="portalz.html" class="portal-z-btn primary">詳細を見る</a>
+                    <a href="https://portalz-820e679f52e9.herokuapp.com/" target="_blank" class="portal-z-btn secondary">デモサイトを見る</a>
                 </div>
             </div>
         </section>
