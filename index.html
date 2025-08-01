@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C3 Works.jp</title>
-    <link rel="icon" type="image/png" href="images/C3_logo_blue.png">
-    <link rel="shortcut icon" type="image/png" href="images/C3_logo_blue.png">
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="shortcut icon" type="image/png" href="images/icon.png">
     <style>
         * {
             margin: 0;
@@ -824,12 +824,13 @@
             }
         }
 
-        .portal-z-description {
-            font-size: 1.2rem;
+        .portal-z-section .portal-z-description,
+        .portal-z-content .portal-z-description {
+            font-size: 1.2rem !important;
             margin-bottom: 2.5rem;
             opacity: 1;
             line-height: 1.6;
-            color: #f8f9fa;
+            color: #f8f9fa !important;
             font-weight: 500;
             text-shadow: 
                 1px 1px 0px #000,
@@ -843,6 +844,8 @@
             border-radius: 15px;
             border: 1px solid rgba(116, 185, 255, 0.3);
             backdrop-filter: blur(5px);
+            text-align: center !important;
+            max-width: none !important;
         }
 
         .portal-z-buttons {
