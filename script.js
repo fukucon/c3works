@@ -29,20 +29,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+            const href = this.getAttribute('href');
             
-            navMenu.classList.remove('active');
-            
-            if (targetSection) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight - 20;
+            // ハッシュリンクの場合のみスクロール処理
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                navMenu.classList.remove('active');
+                
+                if (targetSection) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                    
+                    console.log('Scrolling to:', targetId, 'Position:', targetPosition);
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
