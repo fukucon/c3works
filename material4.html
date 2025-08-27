@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C3 Works - プログラミングコーチ</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="shortcut icon" type="image/png" href="images/icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1e3a8a;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* コンテンツエリア */
+        .page-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* タイトル */
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* サブテキスト */
+        .page-subtitle {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* カード群 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        /* カード基本スタイル */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 3px solid #74b9ff;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .card .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 1rem 0;
+        }
+
+        .card p {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* ナビゲーション */
+        .navigation {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 160px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #4a5568;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+        }
+
+        .nav-dot.active {
+            background: #ff6b6b;
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* ロゴ */
+        .logo-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* 次へボタン */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            text-decoration: none;
+        }
+
+        .next-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        .next-button::after {
+            content: '▼';
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .nav-dot {
+                width: 140px;
+                height: 28px;
+                font-size: 10px;
+            }
+
+            .next-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .next-button::after {
+                font-size: 16px;
+            }
+        }
+
+        /* A4横印刷対応 */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%) !important;
+                color: #1e3a8a !important;
+                min-height: auto;
+                padding: 1rem;
+            }
+
+            .navigation, .next-button, .logo-container {
+                display: none !important;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .cards-grid {
+                gap: 1rem;
+            }
+
+            @page {
+                size: A4 landscape;
+                margin: 1cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ロゴ -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="images/C3_logo_blue.png" alt="C3Works Logo" class="logo">
+        </a>
+    </div>
+
+    <!-- ナビゲーション -->
+    <div class="navigation">
+        <a href="material1.html" class="nav-dot">C3 Worksとは</a>
+        <a href="material2.html" class="nav-dot">エンジニア紹介</a>
+        <a href="material3.html" class="nav-dot">ウェブアプリ開発</a>
+        <a href="material4.html" class="nav-dot active">プログラミングコーチ</a>
+        <a href="material5.html" class="nav-dot">IT・AI導入支援 他</a>
+    </div>
+
+    <!-- 次へボタン -->
+    <a href="material5.html" class="next-button"></a>
+
+    <!-- コンテンツ -->
+    <div class="page-content">
+        <h1 class="page-title">プログラミングコーチ・IT研修</h1>
+        <p class="page-subtitle">企業様、個人様を問わず、Ruby on Railsをはじめ、HTML、CSSなど基本的なウェブ知識から<br>スキルアップ、転職に有利な本格的なウェブアプリ構築まで、サポートいたします。<br>つまずきがちな環境構築も得意としております。</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>チャットサポート<br>プラン</h3>
+                <div class="price">5,000円～</div>
+                <p>テキストチャットによる質問対応・課題解決サポート</p>
+            </div>
+            
+            <div class="card">
+                <h3>ビデオ通話サポート<br>プラン</h3>
+                <div class="price">10,000円～</div>
+                <p>画面共有によるリアルタイム指導・直接的な問題解決</p>
+            </div>
+            
+            <div class="card">
+                <h3>チャット＆ビデオ通話<br>サポートプラン</h3>
+                <div class="price">15,000円～</div>
+                <p>両方のサポート方法を組み合わせた包括的な学習支援</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

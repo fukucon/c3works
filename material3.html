@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C3 Works - ウェブアプリ開発</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="shortcut icon" type="image/png" href="images/icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* コンテンツエリア */
+        .page-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* タイトル */
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* サブテキスト */
+        .page-subtitle {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* カード群 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        /* カード基本スタイル */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: normal;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .features-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #74b9ff;
+        }
+
+        /* ナビゲーション */
+        .navigation {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 160px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #4a5568;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+        }
+
+        .nav-dot.active {
+            background: #ff6b6b;
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* ロゴ */
+        .logo-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* 次へボタン */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            text-decoration: none;
+        }
+
+        .next-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        .next-button::after {
+            content: '▼';
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .nav-dot {
+                width: 140px;
+                height: 28px;
+                font-size: 10px;
+            }
+
+            .next-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .next-button::after {
+                font-size: 16px;
+            }
+        }
+
+        /* A4横印刷対応 */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%) !important;
+                color: white !important;
+                min-height: auto;
+                padding: 1rem;
+            }
+
+            .navigation, .next-button, .logo-container {
+                display: none !important;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .cards-grid {
+                gap: 1rem;
+            }
+
+            .features-list li {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
+            @page {
+                size: A4 landscape;
+                margin: 1cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ロゴ -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="images/C3_logo_blue.png" alt="C3Works Logo" class="logo">
+        </a>
+    </div>
+
+    <!-- ナビゲーション -->
+    <div class="navigation">
+        <a href="material1.html" class="nav-dot">C3 Worksとは</a>
+        <a href="material2.html" class="nav-dot">エンジニア紹介</a>
+        <a href="material3.html" class="nav-dot active">ウェブアプリ開発</a>
+        <a href="material4.html" class="nav-dot">プログラミングコーチ</a>
+        <a href="material5.html" class="nav-dot">IT・AI導入支援 他</a>
+    </div>
+
+    <!-- 次へボタン -->
+    <a href="material4.html" class="next-button"></a>
+
+    <!-- コンテンツ -->
+    <div class="page-content">
+        <h1 class="page-title">ウェブアプリ開発</h1>
+        <p class="page-subtitle">企業ウェブサイトはもちろん、個人のお客様にオリジナルのウェブアプリケーションを提供いたします。<br>AI支援型開発で低価格・高品質をお約束します。</p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>企業向けアプリ開発例</h3>
+                <h4>開発5万円～、保守管理10,000円～</h4>
+                <ul class="features-list">
+                    <li>社内業務管理アプリ：勤怠管理・スケジュール調整</li>
+                    <li>プロジェクト管理アプリ：進捗管理・タスク配分</li>
+                    <li>売上分析アプリ：顧客データ分析・レポート生成</li>
+                    <li>社内コミュニケーションアプリ：チャット・掲示板機能</li>
+                    <li>在庫管理アプリ：商品管理・発注システム</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>個人向けアプリ開発例</h3>
+                <h4>開発1万円～、保守管理1,000円～</h4>
+                <ul class="features-list">
+                    <li>学習管理アプリ：進捗可視化・目標設定</li>
+                    <li>習慣トラッキングアプリ：日々の記録・継続支援</li>
+                    <li>家計簿アプリ：支出管理・予算設定</li>
+                    <li>健康管理アプリ：体重記録・運動履歴</li>
+                    <li>レシピ管理アプリ：料理記録・買い物リスト</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
