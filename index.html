@@ -540,7 +540,6 @@
                 linear-gradient(rgba(116, 185, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(116, 185, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
         }
 
         @keyframes gridMove {
@@ -567,7 +566,6 @@
             height: 120px;
             top: 10%;
             left: 15%;
-            animation: float1 15s infinite ease-in-out;
         }
 
         .float-2 {
@@ -575,7 +573,6 @@
             height: 80px;
             top: 60%;
             right: 20%;
-            animation: float2 12s infinite ease-in-out reverse;
         }
 
         .float-3 {
@@ -583,7 +580,6 @@
             height: 150px;
             bottom: 20%;
             left: 10%;
-            animation: float3 18s infinite ease-in-out;
         }
 
         .float-4 {
@@ -591,7 +587,6 @@
             height: 60px;
             top: 30%;
             right: 10%;
-            animation: float1 10s infinite ease-in-out reverse;
         }
 
         .float-5 {
@@ -599,7 +594,6 @@
             height: 90px;
             bottom: 40%;
             right: 30%;
-            animation: float2 14s infinite ease-in-out;
         }
 
         @keyframes float1 {
@@ -637,21 +631,18 @@
             top: 25%;
             left: 0;
             width: 100%;
-            animation: pulseLine 8s infinite ease-in-out;
         }
 
         .line-2 {
             top: 50%;
             left: 0;
             width: 80%;
-            animation: pulseLine 6s infinite ease-in-out 2s;
         }
 
         .line-3 {
             top: 75%;
             right: 0;
             width: 60%;
-            animation: pulseLine 10s infinite ease-in-out 4s;
         }
 
         @keyframes pulseLine {
@@ -678,37 +669,31 @@
         .particle-1 {
             top: 20%;
             left: 20%;
-            animation: particleFloat 12s infinite linear;
         }
 
         .particle-2 {
             top: 40%;
             left: 70%;
-            animation: particleFloat 15s infinite linear 3s;
         }
 
         .particle-3 {
             top: 70%;
             left: 30%;
-            animation: particleFloat 10s infinite linear 6s;
         }
 
         .particle-4 {
             top: 30%;
             left: 80%;
-            animation: particleFloat 18s infinite linear 2s;
         }
 
         .particle-5 {
             top: 80%;
             left: 60%;
-            animation: particleFloat 14s infinite linear 8s;
         }
 
         .particle-6 {
             top: 60%;
             left: 15%;
-            animation: particleFloat 16s infinite linear 4s;
         }
 
         @keyframes particleFloat {
@@ -733,10 +718,10 @@
             font-size: 2.2rem;
             margin-bottom: 1rem;
             text-shadow: 
-                3px 3px 0px #000,
-                -3px -3px 0px #000,
-                3px -3px 0px #000,
-                -3px 3px 0px #000,
+                1px 1px 0px #000,
+                -1px -1px 0px #000,
+                1px -1px 0px #000,
+                -1px 1px 0px #000,
                 2px 2px 0px #000,
                 -2px -2px 0px #000,
                 2px -2px 0px #000,
@@ -744,7 +729,6 @@
                 0 0 25px rgba(116, 185, 255, 1),
                 0 0 50px rgba(116, 185, 255, 0.8),
                 0 4px 8px rgba(0, 0, 0, 0.8);
-            animation: titleGlow 3s ease-in-out infinite alternate;
             font-weight: 900;
             letter-spacing: 1px;
             filter: contrast(1.2) brightness(1.1);
@@ -753,10 +737,10 @@
         @keyframes titleGlow {
             from { 
                 text-shadow: 
-                    3px 3px 0px #000,
-                    -3px -3px 0px #000,
-                    3px -3px 0px #000,
-                    -3px 3px 0px #000,
+                    1px 1px 0px #000,
+                    -1px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px 1px 0px #000,
                     2px 2px 0px #000,
                     -2px -2px 0px #000,
                     2px -2px 0px #000,
@@ -767,10 +751,10 @@
             }
             to { 
                 text-shadow: 
-                    3px 3px 0px #000,
-                    -3px -3px 0px #000,
-                    3px -3px 0px #000,
-                    -3px 3px 0px #000,
+                    1px 1px 0px #000,
+                    -1px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px 1px 0px #000,
                     2px 2px 0px #000,
                     -2px -2px 0px #000,
                     2px -2px 0px #000,
@@ -788,14 +772,13 @@
             font-weight: 900;
             margin-bottom: 1.5rem;
             text-shadow: 
-                3px 3px 0px #000,
-                -3px -3px 0px #000,
-                3px -3px 0px #000,
-                -3px 3px 0px #000,
+                1px 1px 0px #000,
+                -1px -1px 0px #000,
+                1px -1px 0px #000,
+                -1px 1px 0px #000,
                 0 0 25px rgba(255, 215, 0, 0.9),
                 0 0 50px rgba(255, 215, 0, 0.6),
                 0 0 75px rgba(255, 165, 0, 0.4);
-            animation: nameFloat 4s ease-in-out infinite;
             letter-spacing: 2px;
         }
 
@@ -803,10 +786,10 @@
             0%, 100% { 
                 transform: translateY(0px);
                 text-shadow: 
-                    3px 3px 0px #000,
-                    -3px -3px 0px #000,
-                    3px -3px 0px #000,
-                    -3px 3px 0px #000,
+                    1px 1px 0px #000,
+                    -1px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px 1px 0px #000,
                     0 0 25px rgba(255, 215, 0, 0.9),
                     0 0 50px rgba(255, 215, 0, 0.6),
                     0 0 75px rgba(255, 165, 0, 0.4);
@@ -814,10 +797,10 @@
             50% { 
                 transform: translateY(-5px);
                 text-shadow: 
-                    3px 3px 0px #000,
-                    -3px -3px 0px #000,
-                    3px -3px 0px #000,
-                    -3px 3px 0px #000,
+                    1px 1px 0px #000,
+                    -1px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px 1px 0px #000,
                     0 0 30px rgba(255, 215, 0, 1),
                     0 0 60px rgba(255, 215, 0, 0.8),
                     0 0 90px rgba(255, 140, 0, 0.6);
