@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Portal+ - 投稿詳細</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100vh !important;
+      font-family: "Meiryo", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif !important;
+      margin: 0 !important;
+    }
+    nav.navbar.navbar-expand.navbar-dark {
+      background-color: #007bff !important;
+      padding: 0.2rem 1rem !important;
+      min-height: 40px !important;
+    }
+    .navbar-brand {
+      font-size: 0.9rem !important;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    div.container-fluid.d-flex {
+      display: flex !important;
+      flex: 1 !important;
+      min-height: calc(100vh - 40px) !important;
+    }
+    div.sidebar {
+      background-color: #f8f9fa !important;
+      min-width: 250px !important;
+      max-width: 250px !important;
+      padding: 15px !important;
+      border-right: 1px solid #dee2e6 !important;
+    }
+    div.main-content {
+      flex-grow: 1 !important;
+      padding: 20px !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      text-align: left !important;
+      width: 100% !important;
+      background-color: #bcffff !important;
+      color: #000 !important;
+      border: none !important;
+      text-decoration: none !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a:hover {
+      background-color: #a4ffba !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a.active {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+    .card {
+      border: 1px solid #dee2e6 !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 1rem !important;
+    }
+    .btn {
+      border-radius: 0.375rem !important;
+      padding: 0.375rem 0.75rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+    .btn-primary {
+      background-color: #007bff !important;
+      color: #fff !important;
+      border: 1px solid #007bff !important;
+    }
+    .btn-outline-secondary {
+      background-color: transparent !important;
+      color: #6c757d !important;
+      border: 1px solid #6c757d !important;
+    }
+    .badge {
+      padding: 0.35em 0.65em !important;
+      font-size: 0.75em !important;
+      border-radius: 0.25rem !important;
+    }
+    .bg-secondary {
+      background-color: #6c757d !important;
+      color: #fff !important;
+    }
+    .navbar .btn-outline-light {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      padding: 0.15rem 0.3rem !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="portalz_home.html">Portal+</a>
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <span class="nav-item navbar-text me-3">ようこそ、<span id="username">ゲスト</span>さん</span>
+        <li class="nav-item">
+          <button id="logoutBtn" class="nav-link btn btn-outline-light btn-sm">ログアウト</button>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex">
+    <div class="sidebar">
+      <h5>メニュー</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="portalz_home.html" class="nav-link">ホーム</a></li>
+        <li class="nav-item"><a href="portalz_users.html" class="nav-link">社員一覧</a></li>
+        <li class="nav-item"><a href="portalz_departments.html" class="nav-link">部署一覧</a></li>
+        <li class="nav-item"><a href="portalz_posts.html" class="nav-link active">掲示板</a></li>
+        <li class="nav-item"><a href="portalz_messages.html" class="nav-link">メッセージ</a></li>
+        <li class="nav-item"><a href="portalz_events.html" class="nav-link">スケジュール</a></li>
+        <li class="nav-item"><a href="portalz_documents.html" class="nav-link">文書管理</a></li>
+        <li class="nav-item"><a href="portalz_attendances.html" class="nav-link">勤怠・人事</a></li>
+        <li class="nav-item"><a href="portalz_news.html" class="nav-link">社内ニュース</a></li>
+        <li class="nav-item"><a href="portalz_projects.html" class="nav-link">プロジェクト</a></li>
+        <li class="nav-item"><a href="portalz_faqs.html" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="portalz_workflows.html" class="nav-link">稟議・ワークフロー</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>投稿詳細</h1>
+        <a href="portalz_posts.html" class="btn btn-outline-secondary">戻る</a>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">新入社員歓迎会のお知らせ</h2>
+          <span class="badge bg-secondary">お知らせ</span>
+          <hr>
+          <div class="card-text" style="white-space: pre-wrap;">来週の金曜日に新入社員の歓迎会を開催いたします。
+参加希望の方は人事部までご連絡ください。
+
+【日時】7月26日（金）18:00〜
+【場所】本社1階会議室
+【費用】会費制（3,000円）
+【締切】7月24日（水）まで
+
+皆様のご参加をお待ちしております！</div>
+          <hr>
+          <small class="text-muted">
+            投稿者: 田中太郎 | 2024/07/20 10:30
+          </small>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <a href="portalz_posts_edit.html" class="btn btn-outline-secondary">編集</a>
+        <button class="btn btn-outline-secondary" onclick="if(confirm('本当に削除しますか？')) { alert('削除しました（デモ）'); window.location.href='portalz_posts.html'; }">削除</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const username = localStorage.getItem('portalz_username') || 'ゲスト';
+    document.getElementById('username').textContent = username;
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('portalz_username');
+      window.location.href = 'portalz_login.html';
+    });
+
+    if (!localStorage.getItem('portalz_username')) {
+      window.location.href = 'portalz_login.html';
+    }
+  </script>
+</body>
+</html>

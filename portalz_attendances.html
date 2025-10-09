@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Portal+ - 勤怠・人事</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100vh !important;
+      font-family: "Meiryo", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif !important;
+      margin: 0 !important;
+    }
+    nav.navbar.navbar-expand.navbar-dark {
+      background-color: #007bff !important;
+      padding: 0.2rem 1rem !important;
+      min-height: 40px !important;
+    }
+    .navbar-brand {
+      font-size: 0.9rem !important;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    .navbar-text {
+      font-size: 0.8rem !important;
+      color: #ffffff !important;
+    }
+    div.container-fluid.d-flex {
+      display: flex !important;
+      flex: 1 !important;
+      min-height: calc(100vh - 40px) !important;
+    }
+    div.sidebar {
+      background-color: #f8f9fa !important;
+      min-width: 250px !important;
+      max-width: 250px !important;
+      padding: 15px !important;
+      border-right: 1px solid #dee2e6 !important;
+    }
+    div.main-content {
+      flex-grow: 1 !important;
+      padding: 20px !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      text-align: left !important;
+      width: 100% !important;
+      background-color: #bcffff !important;
+      color: #000 !important;
+      border: none !important;
+      text-decoration: none !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a:hover {
+      background-color: #a4ffba !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a.active {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+    .card {
+      border: 1px solid #dee2e6 !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 1rem !important;
+    }
+    .btn {
+      border-radius: 0.375rem !important;
+      padding: 0.375rem 0.75rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+    .btn-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+      border: 1px solid #28a745 !important;
+    }
+    .btn-primary {
+      background-color: #007bff !important;
+      color: #fff !important;
+      border: 1px solid #007bff !important;
+    }
+    .btn-danger {
+      background-color: #dc3545 !important;
+      color: #fff !important;
+      border: 1px solid #dc3545 !important;
+    }
+    .btn-sm {
+      padding: 0.25rem 0.5rem !important;
+      font-size: 0.875rem !important;
+    }
+    .navbar .btn-outline-light {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      padding: 0.15rem 0.3rem !important;
+    }
+    .table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+    }
+    .table th, .table td {
+      padding: 0.75rem !important;
+      border-bottom: 1px solid #dee2e6 !important;
+    }
+    .table th {
+      background-color: #f8f9fa !important;
+      font-weight: 600 !important;
+    }
+    .badge {
+      padding: 0.35em 0.65em !important;
+      font-size: 0.75em !important;
+      border-radius: 0.25rem !important;
+    }
+    .bg-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+    }
+    .bg-warning {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+    }
+    .bg-danger {
+      background-color: #dc3545 !important;
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="portalz_home.html">Portal+</a>
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <span class="nav-item navbar-text me-3">ようこそ、<span id="username">ゲスト</span>さん</span>
+        <li class="nav-item">
+          <button id="logoutBtn" class="nav-link btn btn-outline-light btn-sm">ログアウト</button>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex">
+    <div class="sidebar">
+      <h5>メニュー</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="portalz_home.html" class="nav-link">ホーム</a></li>
+        <li class="nav-item"><a href="portalz_users.html" class="nav-link">社員一覧</a></li>
+        <li class="nav-item"><a href="portalz_departments.html" class="nav-link">部署一覧</a></li>
+        <li class="nav-item"><a href="portalz_posts.html" class="nav-link">掲示板</a></li>
+        <li class="nav-item"><a href="portalz_messages.html" class="nav-link">メッセージ</a></li>
+        <li class="nav-item"><a href="portalz_events.html" class="nav-link">スケジュール</a></li>
+        <li class="nav-item"><a href="portalz_documents.html" class="nav-link">文書管理</a></li>
+        <li class="nav-item"><a href="portalz_attendances.html" class="nav-link active">勤怠・人事</a></li>
+        <li class="nav-item"><a href="portalz_news.html" class="nav-link">社内ニュース</a></li>
+        <li class="nav-item"><a href="portalz_projects.html" class="nav-link">プロジェクト</a></li>
+        <li class="nav-item"><a href="portalz_faqs.html" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="portalz_workflows.html" class="nav-link">稟議・ワークフロー</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <h1 class="mb-4">勤怠・人事管理</h1>
+
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5>出勤</h5>
+              <button class="btn btn-success" onclick="alert('出勤打刻（デモ）')">打刻</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5>退勤</h5>
+              <button class="btn btn-danger" onclick="alert('退勤打刻（デモ）')">打刻</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5>本日の勤務時間</h5>
+              <h3>7時間30分</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5>今月の勤務時間</h5>
+              <h3>142時間</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4>今月の勤怠記録</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>日付</th>
+                  <th>出勤時刻</th>
+                  <th>退勤時刻</th>
+                  <th>勤務時間</th>
+                  <th>ステータス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2024/07/20</td>
+                  <td>09:00</td>
+                  <td>18:30</td>
+                  <td>8時間30分</td>
+                  <td><span class="badge bg-success">通常</span></td>
+                </tr>
+                <tr>
+                  <td>2024/07/19</td>
+                  <td>09:15</td>
+                  <td>18:00</td>
+                  <td>8時間45分</td>
+                  <td><span class="badge bg-warning">遅刻</span></td>
+                </tr>
+                <tr>
+                  <td>2024/07/18</td>
+                  <td>09:00</td>
+                  <td>19:30</td>
+                  <td>9時間30分</td>
+                  <td><span class="badge bg-success">残業</span></td>
+                </tr>
+                <tr>
+                  <td>2024/07/17</td>
+                  <td>09:00</td>
+                  <td>18:00</td>
+                  <td>8時間00分</td>
+                  <td><span class="badge bg-success">通常</span></td>
+                </tr>
+                <tr>
+                  <td>2024/07/16</td>
+                  <td>09:00</td>
+                  <td>18:15</td>
+                  <td>8時間15分</td>
+                  <td><span class="badge bg-success">通常</span></td>
+                </tr>
+                <tr>
+                  <td>2024/07/15</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td><span class="badge bg-danger">休暇</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="card-header">
+          <h4>休暇・申請</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <p><strong>有給休暇残日数:</strong> 12日</p>
+            </div>
+            <div class="col-md-4">
+              <p><strong>夏季休暇残日数:</strong> 5日</p>
+            </div>
+            <div class="col-md-4">
+              <p><strong>振替休日:</strong> 1日</p>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-2" onclick="alert('休暇申請（デモ）')">休暇申請</button>
+          <button class="btn btn-primary mt-2" onclick="alert('残業申請（デモ）')">残業申請</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const username = localStorage.getItem('portalz_username') || 'ゲスト';
+    document.getElementById('username').textContent = username;
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('portalz_username');
+      window.location.href = 'portalz_login.html';
+    });
+
+    if (!localStorage.getItem('portalz_username')) {
+      window.location.href = 'portalz_login.html';
+    }
+  </script>
+</body>
+</html>

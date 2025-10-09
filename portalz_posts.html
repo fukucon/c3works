@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Portal+ - 掲示板</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100vh !important;
+      font-family: "Meiryo", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif !important;
+      margin: 0 !important;
+    }
+    nav.navbar.navbar-expand.navbar-dark {
+      background-color: #007bff !important;
+      padding: 0.2rem 1rem !important;
+      min-height: 40px !important;
+    }
+    .navbar-brand {
+      font-size: 0.9rem !important;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    .navbar-text {
+      font-size: 0.8rem !important;
+      color: #ffffff !important;
+    }
+    div.container-fluid.d-flex {
+      display: flex !important;
+      flex: 1 !important;
+      min-height: calc(100vh - 40px) !important;
+    }
+    div.sidebar {
+      background-color: #f8f9fa !important;
+      min-width: 250px !important;
+      max-width: 250px !important;
+      padding: 15px !important;
+      border-right: 1px solid #dee2e6 !important;
+    }
+    div.main-content {
+      flex-grow: 1 !important;
+      padding: 20px !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      text-align: left !important;
+      width: 100% !important;
+      background-color: #bcffff !important;
+      color: #000 !important;
+      border: none !important;
+      text-decoration: none !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a:hover {
+      background-color: #a4ffba !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a.active {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+    .card {
+      border: 1px solid #dee2e6 !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 1rem !important;
+    }
+    .btn {
+      border-radius: 0.375rem !important;
+      padding: 0.375rem 0.75rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+    .btn-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+      border: 1px solid #28a745 !important;
+    }
+    .btn-primary {
+      background-color: #007bff !important;
+      color: #fff !important;
+      border: 1px solid #007bff !important;
+    }
+    .btn-outline-primary {
+      background-color: transparent !important;
+      color: #007bff !important;
+      border: 1px solid #007bff !important;
+    }
+    .btn-outline-secondary {
+      background-color: transparent !important;
+      color: #6c757d !important;
+      border: 1px solid #6c757d !important;
+    }
+    .btn-sm {
+      padding: 0.25rem 0.5rem !important;
+      font-size: 0.875rem !important;
+    }
+    .badge {
+      padding: 0.35em 0.65em !important;
+      font-size: 0.75em !important;
+      border-radius: 0.25rem !important;
+    }
+    .bg-secondary {
+      background-color: #6c757d !important;
+      color: #fff !important;
+    }
+    .navbar .btn-outline-light {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      padding: 0.15rem 0.3rem !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="portalz_home.html">Portal+</a>
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <span class="nav-item navbar-text me-3">ようこそ、<span id="username">ゲスト</span>さん</span>
+        <li class="nav-item">
+          <button id="logoutBtn" class="nav-link btn btn-outline-light btn-sm">ログアウト</button>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex">
+    <div class="sidebar">
+      <h5>メニュー</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="portalz_home.html" class="nav-link">ホーム</a></li>
+        <li class="nav-item"><a href="portalz_users.html" class="nav-link">社員一覧</a></li>
+        <li class="nav-item"><a href="portalz_departments.html" class="nav-link">部署一覧</a></li>
+        <li class="nav-item"><a href="portalz_posts.html" class="nav-link active">掲示板</a></li>
+        <li class="nav-item"><a href="portalz_messages.html" class="nav-link">メッセージ</a></li>
+        <li class="nav-item"><a href="portalz_events.html" class="nav-link">スケジュール</a></li>
+        <li class="nav-item"><a href="portalz_documents.html" class="nav-link">文書管理</a></li>
+        <li class="nav-item"><a href="portalz_attendances.html" class="nav-link">勤怠・人事</a></li>
+        <li class="nav-item"><a href="portalz_news.html" class="nav-link">社内ニュース</a></li>
+        <li class="nav-item"><a href="portalz_projects.html" class="nav-link">プロジェクト</a></li>
+        <li class="nav-item"><a href="portalz_faqs.html" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="portalz_workflows.html" class="nav-link">稟議・ワークフロー</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>掲示板</h1>
+        <a href="portalz_posts_new.html" class="btn btn-success">新規投稿</a>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="btn-group" role="group">
+            <button class="btn btn-primary" id="filterAll">全て</button>
+            <button class="btn btn-outline-primary" id="filterNotice">お知らせ</button>
+            <button class="btn btn-outline-primary" id="filterBusiness">業務連絡</button>
+            <button class="btn btn-outline-primary" id="filterEvent">イベント</button>
+            <button class="btn btn-outline-primary" id="filterTech">技術情報</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="postsContainer">
+        <div class="col-md-12 mb-3" data-category="お知らせ">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h5 class="card-title">
+                    <a href="portalz_posts_show.html" class="text-decoration-none">新入社員歓迎会のお知らせ</a>
+                  </h5>
+                  <span class="badge bg-secondary">お知らせ</span>
+                  <p class="card-text mt-2">来週の金曜日に新入社員の歓迎会を開催いたします。参加希望の方は人事部までご連絡ください。会場は本社1階の会議室を予定しております。</p>
+                  <small class="text-muted">
+                    投稿者: 田中太郎 |
+                    2024/07/20 10:30
+                  </small>
+                </div>
+                <div>
+                  <a href="portalz_posts_edit.html" class="btn btn-outline-secondary btn-sm">編集</a>
+                  <button class="btn btn-outline-secondary btn-sm" onclick="alert('削除しました（デモ）')">削除</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3" data-category="業務連絡">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h5 class="card-title">
+                    <a href="portalz_posts_show.html" class="text-decoration-none">システムメンテナンスのお知らせ</a>
+                  </h5>
+                  <span class="badge bg-secondary">業務連絡</span>
+                  <p class="card-text mt-2">7月25日（木）の深夜0時から3時までシステムメンテナンスを実施します。その間、社内システムへのアクセスができなくなりますので、ご協力をお願いいたします。</p>
+                  <small class="text-muted">
+                    投稿者: 山田花子 |
+                    2024/07/19 14:00
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3" data-category="お知らせ">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h5 class="card-title">
+                    <a href="portalz_posts_show.html" class="text-decoration-none">夏季休暇について</a>
+                  </h5>
+                  <span class="badge bg-secondary">お知らせ</span>
+                  <p class="card-text mt-2">夏季休暇の取得期間は8月10日から8月16日までです。休暇の申請は7月末までにお願いします。申請はポータルサイトから行ってください。</p>
+                  <small class="text-muted">
+                    投稿者: 佐藤次郎 |
+                    2024/07/18 09:15
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3" data-category="イベント">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h5 class="card-title">
+                    <a href="portalz_posts_show.html" class="text-decoration-none">社内運動会の開催</a>
+                  </h5>
+                  <span class="badge bg-secondary">イベント</span>
+                  <p class="card-text mt-2">9月15日（日）に社内運動会を開催します。ご家族の参加も大歓迎です。詳細は後日お知らせします。</p>
+                  <small class="text-muted">
+                    投稿者: 鈴木一郎 |
+                    2024/07/17 16:45
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3" data-category="技術情報">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h5 class="card-title">
+                    <a href="portalz_posts_show.html" class="text-decoration-none">新システムの導入について</a>
+                  </h5>
+                  <span class="badge bg-secondary">技術情報</span>
+                  <p class="card-text mt-2">来月から新しいプロジェクト管理システムを導入します。操作方法の研修会を7月30日に開催しますので、ぜひご参加ください。</p>
+                  <small class="text-muted">
+                    投稿者: 高橋美咲 |
+                    2024/07/16 11:20
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const username = localStorage.getItem('portalz_username') || 'ゲスト';
+    document.getElementById('username').textContent = username;
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('portalz_username');
+      window.location.href = 'portalz_login.html';
+    });
+
+    if (!localStorage.getItem('portalz_username')) {
+      window.location.href = 'portalz_login.html';
+    }
+
+    // カテゴリフィルタ機能
+    const filterButtons = {
+      'filterAll': '',
+      'filterNotice': 'お知らせ',
+      'filterBusiness': '業務連絡',
+      'filterEvent': 'イベント',
+      'filterTech': '技術情報'
+    };
+
+    Object.keys(filterButtons).forEach(buttonId => {
+      document.getElementById(buttonId).addEventListener('click', function() {
+        const category = filterButtons[buttonId];
+        const posts = document.querySelectorAll('#postsContainer > div');
+
+        // ボタンのスタイルを更新
+        Object.keys(filterButtons).forEach(id => {
+          const btn = document.getElementById(id);
+          if (id === buttonId) {
+            btn.classList.remove('btn-outline-primary');
+            btn.classList.add('btn-primary');
+          } else {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-outline-primary');
+          }
+        });
+
+        // 投稿のフィルタリング
+        posts.forEach(post => {
+          if (category === '' || post.getAttribute('data-category') === category) {
+            post.style.display = 'block';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Portal+ - プロジェクト</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100vh !important;
+      font-family: "Meiryo", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif !important;
+      margin: 0 !important;
+    }
+    nav.navbar.navbar-expand.navbar-dark {
+      background-color: #007bff !important;
+      padding: 0.2rem 1rem !important;
+      min-height: 40px !important;
+    }
+    .navbar-brand {
+      font-size: 0.9rem !important;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    .navbar-text {
+      font-size: 0.8rem !important;
+      color: #ffffff !important;
+    }
+    div.container-fluid.d-flex {
+      display: flex !important;
+      flex: 1 !important;
+      min-height: calc(100vh - 40px) !important;
+    }
+    div.sidebar {
+      background-color: #f8f9fa !important;
+      min-width: 250px !important;
+      max-width: 250px !important;
+      padding: 15px !important;
+      border-right: 1px solid #dee2e6 !important;
+    }
+    div.main-content {
+      flex-grow: 1 !important;
+      padding: 20px !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      text-align: left !important;
+      width: 100% !important;
+      background-color: #bcffff !important;
+      color: #000 !important;
+      border: none !important;
+      text-decoration: none !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a:hover {
+      background-color: #a4ffba !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a.active {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+    .card {
+      border: 1px solid #dee2e6 !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 1rem !important;
+    }
+    .btn {
+      border-radius: 0.375rem !important;
+      padding: 0.375rem 0.75rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+    .btn-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+      border: 1px solid #28a745 !important;
+    }
+    .btn-primary {
+      background-color: #007bff !important;
+      color: #fff !important;
+      border: 1px solid #007bff !important;
+    }
+    .btn-sm {
+      padding: 0.25rem 0.5rem !important;
+      font-size: 0.875rem !important;
+    }
+    .navbar .btn-outline-light {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      padding: 0.15rem 0.3rem !important;
+    }
+    .badge {
+      padding: 0.35em 0.65em !important;
+      font-size: 0.75em !important;
+      border-radius: 0.25rem !important;
+    }
+    .bg-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+    }
+    .bg-warning {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+    }
+    .bg-info {
+      background-color: #17a2b8 !important;
+      color: #fff !important;
+    }
+    .bg-danger {
+      background-color: #dc3545 !important;
+      color: #fff !important;
+    }
+    .progress {
+      height: 20px !important;
+      border-radius: 0.375rem !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="portalz_home.html">Portal+</a>
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <span class="nav-item navbar-text me-3">ようこそ、<span id="username">ゲスト</span>さん</span>
+        <li class="nav-item">
+          <button id="logoutBtn" class="nav-link btn btn-outline-light btn-sm">ログアウト</button>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex">
+    <div class="sidebar">
+      <h5>メニュー</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="portalz_home.html" class="nav-link">ホーム</a></li>
+        <li class="nav-item"><a href="portalz_users.html" class="nav-link">社員一覧</a></li>
+        <li class="nav-item"><a href="portalz_departments.html" class="nav-link">部署一覧</a></li>
+        <li class="nav-item"><a href="portalz_posts.html" class="nav-link">掲示板</a></li>
+        <li class="nav-item"><a href="portalz_messages.html" class="nav-link">メッセージ</a></li>
+        <li class="nav-item"><a href="portalz_events.html" class="nav-link">スケジュール</a></li>
+        <li class="nav-item"><a href="portalz_documents.html" class="nav-link">文書管理</a></li>
+        <li class="nav-item"><a href="portalz_attendances.html" class="nav-link">勤怠・人事</a></li>
+        <li class="nav-item"><a href="portalz_news.html" class="nav-link">社内ニュース</a></li>
+        <li class="nav-item"><a href="portalz_projects.html" class="nav-link active">プロジェクト</a></li>
+        <li class="nav-item"><a href="portalz_faqs.html" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="portalz_workflows.html" class="nav-link">稟議・ワークフロー</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>プロジェクト管理</h1>
+        <a href="portalz_projects_new.html" class="btn btn-success">新規プロジェクト</a>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>新システム開発プロジェクト <span class="badge bg-info">進行中</span></h5>
+            </div>
+            <div class="card-body">
+              <p><strong>責任者:</strong> 高橋美咲</p>
+              <p><strong>期間:</strong> 2024/04/01 - 2024/09/30</p>
+              <p><strong>メンバー:</strong> 8名</p>
+              <p><strong>進捗状況:</strong></p>
+              <div class="progress">
+                <div class="progress-bar bg-success" style="width: 65%">65%</div>
+              </div>
+              <p class="mt-2"><strong>説明:</strong> 新しい業務管理システムの開発を行っています。現在、設計フェーズが完了し、実装フェーズに入っています。</p>
+              <button class="btn btn-primary btn-sm mt-2" onclick="alert('詳細表示（デモ）')">詳細</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>営業支援ツール導入 <span class="badge bg-warning">準備中</span></h5>
+            </div>
+            <div class="card-body">
+              <p><strong>責任者:</strong> 田中太郎</p>
+              <p><strong>期間:</strong> 2024/06/01 - 2024/08/31</p>
+              <p><strong>メンバー:</strong> 5名</p>
+              <p><strong>進捗状況:</strong></p>
+              <div class="progress">
+                <div class="progress-bar bg-warning" style="width: 30%">30%</div>
+              </div>
+              <p class="mt-2"><strong>説明:</strong> 営業部門の業務効率化を目的とした支援ツールの導入プロジェクトです。</p>
+              <button class="btn btn-primary btn-sm mt-2" onclick="alert('詳細表示（デモ）')">詳細</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>社内ポータルサイト構築 <span class="badge bg-success">完了</span></h5>
+            </div>
+            <div class="card-body">
+              <p><strong>責任者:</strong> 佐藤次郎</p>
+              <p><strong>期間:</strong> 2024/01/15 - 2024/06/30</p>
+              <p><strong>メンバー:</strong> 6名</p>
+              <p><strong>進捗状況:</strong></p>
+              <div class="progress">
+                <div class="progress-bar bg-success" style="width: 100%">100%</div>
+              </div>
+              <p class="mt-2"><strong>説明:</strong> 社内コミュニケーション活性化のためのポータルサイトを構築しました。</p>
+              <button class="btn btn-primary btn-sm mt-2" onclick="alert('詳細表示（デモ）')">詳細</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>セキュリティ強化プロジェクト <span class="badge bg-danger">遅延</span></h5>
+            </div>
+            <div class="card-body">
+              <p><strong>責任者:</strong> 伊藤健太</p>
+              <p><strong>期間:</strong> 2024/05/01 - 2024/07/31</p>
+              <p><strong>メンバー:</strong> 4名</p>
+              <p><strong>進捗状況:</strong></p>
+              <div class="progress">
+                <div class="progress-bar bg-danger" style="width: 45%">45%</div>
+              </div>
+              <p class="mt-2"><strong>説明:</strong> 社内システムのセキュリティ対策を強化するプロジェクトです。一部作業に遅延が発生しています。</p>
+              <button class="btn btn-primary btn-sm mt-2" onclick="alert('詳細表示（デモ）')">詳細</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const username = localStorage.getItem('portalz_username') || 'ゲスト';
+    document.getElementById('username').textContent = username;
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('portalz_username');
+      window.location.href = 'portalz_login.html';
+    });
+
+    if (!localStorage.getItem('portalz_username')) {
+      window.location.href = 'portalz_login.html';
+    }
+  </script>
+</body>
+</html>

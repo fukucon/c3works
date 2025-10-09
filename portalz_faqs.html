@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Portal+ - FAQ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100vh !important;
+      font-family: "Meiryo", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif !important;
+      margin: 0 !important;
+    }
+    nav.navbar.navbar-expand.navbar-dark {
+      background-color: #007bff !important;
+      padding: 0.2rem 1rem !important;
+      min-height: 40px !important;
+    }
+    .navbar-brand {
+      font-size: 0.9rem !important;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    .navbar-text {
+      font-size: 0.8rem !important;
+      color: #ffffff !important;
+    }
+    div.container-fluid.d-flex {
+      display: flex !important;
+      flex: 1 !important;
+      min-height: calc(100vh - 40px) !important;
+    }
+    div.sidebar {
+      background-color: #f8f9fa !important;
+      min-width: 250px !important;
+      max-width: 250px !important;
+      padding: 15px !important;
+      border-right: 1px solid #dee2e6 !important;
+    }
+    div.main-content {
+      flex-grow: 1 !important;
+      padding: 20px !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      text-align: left !important;
+      width: 100% !important;
+      background-color: #bcffff !important;
+      color: #000 !important;
+      border: none !important;
+      text-decoration: none !important;
+      display: block !important;
+      margin-bottom: 0.5rem !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a:hover {
+      background-color: #a4ffba !important;
+    }
+    div.sidebar ul.nav.flex-column li.nav-item a.active {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+    .card {
+      border: 1px solid #dee2e6 !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+      margin-bottom: 1rem !important;
+    }
+    .btn {
+      border-radius: 0.375rem !important;
+      padding: 0.375rem 0.75rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+    }
+    .btn-success {
+      background-color: #28a745 !important;
+      color: #fff !important;
+      border: 1px solid #28a745 !important;
+    }
+    .navbar .btn-outline-light {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      padding: 0.15rem 0.3rem !important;
+    }
+    .accordion-button {
+      background-color: #f8f9fa !important;
+      color: #000 !important;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #007bff !important;
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="portalz_home.html">Portal+</a>
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <span class="nav-item navbar-text me-3">ようこそ、<span id="username">ゲスト</span>さん</span>
+        <li class="nav-item">
+          <button id="logoutBtn" class="nav-link btn btn-outline-light btn-sm">ログアウト</button>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex">
+    <div class="sidebar">
+      <h5>メニュー</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="portalz_home.html" class="nav-link">ホーム</a></li>
+        <li class="nav-item"><a href="portalz_users.html" class="nav-link">社員一覧</a></li>
+        <li class="nav-item"><a href="portalz_departments.html" class="nav-link">部署一覧</a></li>
+        <li class="nav-item"><a href="portalz_posts.html" class="nav-link">掲示板</a></li>
+        <li class="nav-item"><a href="portalz_messages.html" class="nav-link">メッセージ</a></li>
+        <li class="nav-item"><a href="portalz_events.html" class="nav-link">スケジュール</a></li>
+        <li class="nav-item"><a href="portalz_documents.html" class="nav-link">文書管理</a></li>
+        <li class="nav-item"><a href="portalz_attendances.html" class="nav-link">勤怠・人事</a></li>
+        <li class="nav-item"><a href="portalz_news.html" class="nav-link">社内ニュース</a></li>
+        <li class="nav-item"><a href="portalz_projects.html" class="nav-link">プロジェクト</a></li>
+        <li class="nav-item"><a href="portalz_faqs.html" class="nav-link active">FAQ</a></li>
+        <li class="nav-item"><a href="portalz_workflows.html" class="nav-link">稟議・ワークフロー</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>よくある質問（FAQ）</h1>
+        <a href="portalz_faqs_new.html" class="btn btn-success">FAQ追加</a>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <h4>システム関連</h4>
+        </div>
+        <div class="card-body">
+          <div class="accordion" id="systemFAQ">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Q1. パスワードを忘れた場合はどうすればいいですか？
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#systemFAQ">
+                <div class="accordion-body">
+                  パスワードをお忘れの場合は、ログイン画面の「パスワードをお忘れの方」リンクをクリックし、登録されているメールアドレスを入力してください。パスワード再設定用のリンクが送信されます。
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Q2. システムにログインできない時の対処法は？
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#systemFAQ">
+                <div class="accordion-body">
+                  まず、入力したユーザー名とパスワードが正しいか確認してください。Caps Lockがオンになっていないか、全角入力になっていないかも確認してください。それでも解決しない場合は、システム管理部（内線400）までお問い合わせください。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <h4>勤怠管理</h4>
+        </div>
+        <div class="card-body">
+          <div class="accordion" id="attendanceFAQ">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Q3. 打刻を忘れた場合はどうすればいいですか？
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#attendanceFAQ">
+                <div class="accordion-body">
+                  打刻を忘れた場合は、上司に報告の上、勤怠管理システムから「打刻修正申請」を行ってください。承認後、正しい勤怠時間が記録されます。
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Q4. 有給休暇の申請方法は？
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#attendanceFAQ">
+                <div class="accordion-body">
+                  勤怠・人事ページから「休暇申請」ボタンをクリックし、必要事項を入力して送信してください。申請は原則として休暇取得日の1週間前までに行ってください。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <h4>経費精算</h4>
+        </div>
+        <div class="card-body">
+          <div class="accordion" id="expenseFAQ">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  Q5. 経費精算の申請期限はいつですか？
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#expenseFAQ">
+                <div class="accordion-body">
+                  経費精算は、経費発生月の翌月末までに申請してください。申請が遅れると、翌々月の給与振込となる場合がありますので、ご注意ください。
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                  Q6. 領収書を紛失した場合はどうすればいいですか？
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#expenseFAQ">
+                <div class="accordion-body">
+                  領収書を紛失した場合は、「支払証明書」フォームに記入し、上司の承認を得た上で経理部に提出してください。ただし、高額な経費の場合は認められない場合があります。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4>その他</h4>
+        </div>
+        <div class="card-body">
+          <div class="accordion" id="otherFAQ">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                  Q7. 社内システムに関する問い合わせ先は？
+                </button>
+              </h2>
+              <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#otherFAQ">
+                <div class="accordion-body">
+                  システム関連のお問い合わせは、システム管理部（内線400、メール: system@example.com）までご連絡ください。営業時間は平日9:00-18:00です。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const username = localStorage.getItem('portalz_username') || 'ゲスト';
+    document.getElementById('username').textContent = username;
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('portalz_username');
+      window.location.href = 'portalz_login.html';
+    });
+
+    if (!localStorage.getItem('portalz_username')) {
+      window.location.href = 'portalz_login.html';
+    }
+  </script>
+</body>
+</html>
